@@ -1,0 +1,50 @@
+# Private data and derived artifacts
+data/
+dsr_data/
+recordings/
+audio/
+features/
+weights/
+checkpoints/
+outputs/
+models/
+dsr_demo/random_pool/
+dsr_demo/original/
+dsr_demo/reconstructed/
+dsr_demo/clear/
+dsr_demo/personalized/
+
+# Model and dataset files
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.parquet
+*.npy
+*.npz
+*.wav
+*.flac
+*.mp3
+*.m4a
+*.tar
+*.tar.gz
+*.zip
+
+# Local configuration and caches
+.env
+.env.*
+config.json
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+server.log
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
