@@ -19,8 +19,8 @@ git @GitSafe diff --cached --quiet
 if ($LASTEXITCODE -ne 0) { git @GitSafe commit -m "Update public release" }
 
 Write-Host "[3/4] Connecting repository..."
-$origin = git @GitSafe remote get-url origin 2>$null
-if ($LASTEXITCODE -eq 0) {
+$originExists = (git @GitSafe remote) -contains "origin"
+if ($originExists) {
     git @GitSafe remote set-url origin $RepoUrl
 } else {
     git @GitSafe remote add origin $RepoUrl
