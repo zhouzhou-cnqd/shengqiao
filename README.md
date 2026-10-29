@@ -6,6 +6,15 @@
 
 ![声桥首页](docs/images/home.png)
 
+## HTML 在线展示
+
+本仓库自带完整双层 HTML 界面，并通过 GitHub Pages 自动部署。公开页面使用内置科研示意图展示交互流程，不加载患者音频、测试数据或模型权重。
+
+- 项目首页：`https://github.com/zhouzhou-cnqd/声桥`
+- 在线界面：`https://zhouzhou-cnqd.github.io/声桥/`
+
+> 仓库首次推送后，请在 **Settings → Pages** 中确认 Source 为 **GitHub Actions**。
+
 ## 为什么做这个项目
 
 构音障碍语音常伴随发音边界不清、时长变化和频谱结构偏移，通用语音识别模型容易失效。声桥当前不追求“一套模型识别所有人”，而是聚焦更可落地的目标：针对单一使用者建立个性化模型，在封闭词表场景中提高识别稳定性，并把“输入—理解—重建”的过程做成可解释、可体验的浏览器演示。
@@ -83,6 +92,20 @@ python -m http.server 8765 --directory dsr_demo
 ```
 
 打开 `http://127.0.0.1:8765/` 即可查看首页。完整随机体验需要在本地按约定目录放入授权测试资源；资源目录已被 `.gitignore` 排除，不会随代码上传。
+
+## 一键发布到新仓库
+
+先在 GitHub 新建一个名为“声桥”的空仓库（不要勾选自动生成 README），然后在 PowerShell 中运行：
+
+```powershell
+.\publish.ps1
+```
+
+脚本会依次执行隐私检查、提交整理、绑定新仓库和推送。若仓库地址不同，可运行：
+
+```powershell
+.\publish.ps1 -RepoUrl "https://github.com/你的账号/你的仓库.git"
+```
 
 ## 训练示例
 
