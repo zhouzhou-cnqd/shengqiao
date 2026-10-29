@@ -66,9 +66,9 @@ UA-Speech 原始论文为 [Kim et al., *Dysarthric speech database for universal
 
 ### 成功案例
 
-![锁定测试集真实识别成功案例](docs/images/dashboard-real-success.png)
+![锁定测试集真实识别成功案例](docs/images/dashboard-real-success-full.png)
 
-> 锁定测试集真实成功样本：目标词与模型预测均为 `delete`，置信度 99.18%。患者原始音频、原始频谱与中间特征依据语料许可要求遮盖；重建和标准参考在授权本地环境生成。
+> 锁定测试集真实成功样本：目标词与模型预测均为 `delete`，置信度 99.18%。经项目所有者明确授权，截图公开输入频谱、WavLM 特征可视化、重建频谱和标准参考；仓库仍不提供原始 WAV、可下载特征张量、测试池或模型权重。
 
 ### 失败案例
 
@@ -156,7 +156,7 @@ python check_public_release.py
 
 - 患者或健康对照的原始/处理后音频；
 - 训练、验证和测试划分清单；
-- WavLM 中间特征、演示样本池及标签级明细；
+- 可下载的 WavLM 特征张量、频谱缓存、演示样本池及标签级明细（README 仅展示一张经授权的静态科研截图）；
 - 模型权重、检查点、原型向量和私有实验配置。
 
 详细规则见 [DATA_POLICY.md](DATA_POLICY.md)。如需复现实验，请自行准备具备合法授权的数据，并遵守相关伦理、隐私与数据使用协议。
