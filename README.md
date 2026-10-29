@@ -66,9 +66,9 @@ UA-Speech 原始论文为 [Kim et al., *Dysarthric speech database for universal
 
 ### 成功案例
 
-![识别成功的公开安全展示案例](docs/images/dashboard-success.png)
+![锁定测试集真实识别成功案例](docs/images/dashboard-success.png)
 
-> 公开安全展示模式：识别成功状态、处理中间特征和频谱流程均可交互查看；频谱为合成示意，不包含患者音频、派生数据或模型权重。
+> 锁定测试集真实成功样本：目标词与模型预测均为 `delete`，置信度 99.18%。患者原始音频、原始频谱与中间特征依据语料许可要求遮盖；重建和标准参考在授权本地环境生成。
 
 ### 失败案例
 
