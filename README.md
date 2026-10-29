@@ -62,9 +62,19 @@ UA-Speech 原始论文为 [Kim et al., *Dysarthric speech database for universal
 
 - 封闭词表：449 个词；
 - 最佳轮次：Epoch 24；
-- 演示样本来自锁定测试集，既保留识别正确样本，也如实展示错误样本。
+- 演示同时保留识别成功状态与错误状态，用于展示系统能力和当前边界。
 
-![实时分析界面](docs/images/dashboard.png)
+### 成功案例
+
+![识别成功的公开安全展示案例](docs/images/dashboard-success.png)
+
+> 公开安全展示模式：识别成功状态、处理中间特征和频谱流程均可交互查看；频谱为合成示意，不包含患者音频、派生数据或模型权重。
+
+### 失败案例
+
+![识别失败案例](docs/images/dashboard.png)
+
+> 失败结果同样保留，用于如实呈现模型在个别词语上的混淆和当前能力边界。
 
 ## 如何理解“重建”
 
