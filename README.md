@@ -10,8 +10,8 @@
 
 本仓库自带完整双层 HTML 界面，并通过 GitHub Pages 自动部署。公开页面使用内置科研示意图展示交互流程，不加载患者音频、测试数据或模型权重。
 
-- 项目首页：`https://github.com/zhouzhou-cnqd/声桥`
-- 在线界面：`https://zhouzhou-cnqd.github.io/声桥/`
+- 项目首页：`https://github.com/zhouzhou-cnqd/shengqiao`
+- 在线界面：`https://zhouzhou-cnqd.github.io/shengqiao/`
 
 > 仓库首次推送后，请在 **Settings → Pages** 中确认 Source 为 **GitHub Actions**。
 
