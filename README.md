@@ -48,6 +48,21 @@ flowchart LR
 5. **清晰语音重建**：根据预测词检索清晰语音参考，形成可播放的重建结果，并生成 STFT 频谱用于对照展示。
 6. **端侧演示**：浏览器随机抽取本地测试样本，展示识别结果、中间特征、频谱逐步建立过程和三路音频对照。
 
+## 数据与预训练来源
+
+本项目没有自行采集患者语音，实验数据和预训练基底如下：
+
+| 环节 | 实际来源 | 本项目如何使用 | 是否随仓库公开 |
+| --- | --- | --- | --- |
+| 构音障碍语音 | [UA-Speech 官方语料](https://speechtechnology.web.illinois.edu/uaspeech/)，实验时读取了社区整理的 [`shun31y/uaspeech_tts_high`](https://huggingface.co/datasets/shun31y/uaspeech_tts_high) 本地 Parquet 快照 | 仅选择快照中的 M01，说话者内按词分层为 50%/20%/30% | 否 |
+| 通用声学基底 | [`microsoft/wavlm-base-plus`](https://huggingface.co/microsoft/wavlm-base-plus) | 16 kHz 输入，提取第 6 层表征；其官方模型卡说明预训练语料为 Libri-Light 60k h、GigaSpeech 10k h、VoxPopuli 24k h | 不重新分发权重 |
+| 清晰语音参考 | Windows SAPI 本地 TTS | 根据识别词生成/检索清晰参考语音，仅用于展示链路 | 否 |
+| GitHub 单音频示例 | `demo_single_audio.py` 确定性生成的合成语音状信号 | 演示 16 kHz 标准化、播放和 STFT 频谱，不冒充患者语音或模型推理 | 只公开生成代码 |
+
+UA-Speech 原始论文为 [Kim et al., *Dysarthric speech database for universal access research*, Interspeech 2008](https://www.isca-archive.org/interspeech_2008/kim08c_interspeech.html)。官方页面明确规定：语料仅供政府或学术研究机构研究使用、禁止商业用途、须防止数据被盗且不得再分发。因此本仓库不会提交任何 UA-Speech 音频、派生音频、逐样本清单、特征或权重；第三方镜像仅用于说明本实验当时读取的技术来源，不替代官方授权。若要复现实验，应首先向 UA-Speech 官方申请合法访问。
+
+当前 M01 可用子集共 2,805 条、449 个词类。固定随机种子 42，按每个词内部进行 50%/20%/30% 划分，得到训练 1,402、验证 561、测试 842 条。这里的“健康语音基底”准确地指微软已经完成的 WavLM 自监督预训练，本项目没有重新收集或训练一套健康人语料。
+
 ## 当前结果
 
 当前版本针对单一说话者 M01，使用 50% / 20% / 30% 的训练、验证和测试划分：
@@ -77,6 +92,7 @@ flowchart LR
 │  ├─ index.html                 # 双层浏览器演示界面
 │  └─ assets/                    # 公共视觉素材
 ├─ docs/images/                  # README 截图
+├─ demo_single_audio.py          # 无数据/无权重的单音频演示
 ├─ train_personalized_m01.py     # 个性化分类头训练示例
 ├─ build_random_demo_pool.py     # 本地演示索引构建脚本
 ├─ generate_random_voice_bank.ps1# Windows 本地清晰语音生成示例
@@ -92,6 +108,22 @@ python -m http.server 8765 --directory dsr_demo
 ```
 
 打开 `http://127.0.0.1:8765/` 即可查看首页。完整随机体验需要在本地按约定目录放入授权测试资源；资源目录已被 `.gitignore` 排除，不会随代码上传。
+
+### 单音频演示脚本
+
+无需数据集或模型权重即可生成一个自包含 HTML 示例：
+
+```bash
+python demo_single_audio.py
+```
+
+默认音频由脚本确定性合成，不来自任何患者。也可以分析自己有权使用的 16-bit PCM WAV：
+
+```bash
+python demo_single_audio.py --input /path/to/authorized.wav --output /tmp/shengqiao-demo.html
+```
+
+脚本只做标准化、播放和 STFT 频谱展示，不会伪装成私有模型的识别或重建结果。
 
 ## 一键发布到新仓库
 
