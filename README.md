@@ -13,8 +13,6 @@
 - 项目首页：`https://github.com/zhouzhou-cnqd/shengqiao`
 - 在线界面：`https://zhouzhou-cnqd.github.io/shengqiao/`
 
-> 仓库首次推送后，请在 **Settings → Pages** 中确认 Source 为 **GitHub Actions**。
-
 ## 为什么做这个项目
 
 构音障碍语音常伴随发音边界不清、时长变化和频谱结构偏移，通用语音识别模型容易失效。声桥当前不追求“一套模型识别所有人”，而是聚焦更可落地的目标：针对单一使用者建立个性化模型，在封闭词表场景中提高识别稳定性，并把“输入—理解—重建”的过程做成可解释、可体验的浏览器演示。
